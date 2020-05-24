@@ -7,3 +7,23 @@
 //
 
 import Foundation
+class Service {
+    
+    private let URLBase = "https://gateway.marvel.com:443/v1/public/"
+    private let session = URLSession.shared
+    
+    private let publicKey: String
+    private let privateKey: String
+    
+    let decoder = JSONDecoder()
+    
+    
+    public init(publicKey: String, privateKey: String) {
+        self.publicKey = publicKey
+        self.privateKey = privateKey
+    }
+    
+    
+    
+    
+}
