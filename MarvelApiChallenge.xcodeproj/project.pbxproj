@@ -13,6 +13,8 @@
 		775E8F102478ECA200ADA32A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775E8F0E2478ECA200ADA32A /* Main.storyboard */; };
 		775E8F122478ECA600ADA32A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775E8F112478ECA600ADA32A /* Assets.xcassets */; };
 		775E8F152478ECA600ADA32A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775E8F132478ECA600ADA32A /* LaunchScreen.storyboard */; };
+		77F1A07D247AC992005A75A5 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1A07C247AC992005A75A5 /* Presenter.swift */; };
+		77F1A081247ACB26005A75A5 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1A080247ACB26005A75A5 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		775E8F112478ECA600ADA32A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		775E8F142478ECA600ADA32A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		775E8F162478ECA600ADA32A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77F1A07C247AC992005A75A5 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		77F1A080247ACB26005A75A5 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				775E8F072478ECA200ADA32A /* MarvelApiChallenge */,
+				77F1A082247ACB8A005A75A5 /* Utils */,
 				775E8F062478ECA200ADA32A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +61,72 @@
 		775E8F072478ECA200ADA32A /* MarvelApiChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				775E8F082478ECA200ADA32A /* AppDelegate.swift */,
-				775E8F0A2478ECA200ADA32A /* SceneDelegate.swift */,
-				775E8F0C2478ECA200ADA32A /* ViewController.swift */,
-				775E8F0E2478ECA200ADA32A /* Main.storyboard */,
-				775E8F112478ECA600ADA32A /* Assets.xcassets */,
-				775E8F132478ECA600ADA32A /* LaunchScreen.storyboard */,
+				77F1A07A247AC0B5005A75A5 /* Presenter */,
+				77F1A079247AC0B0005A75A5 /* View */,
+				77F1A078247AC0A7005A75A5 /* Model */,
 				775E8F162478ECA600ADA32A /* Info.plist */,
 			);
 			path = MarvelApiChallenge;
+			sourceTree = "<group>";
+		};
+		77F1A078247AC0A7005A75A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77F1A080247ACB26005A75A5 /* Service.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		77F1A079247AC0B0005A75A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				775E8F0E2478ECA200ADA32A /* Main.storyboard */,
+				775E8F0C2478ECA200ADA32A /* ViewController.swift */,
+				77F1A07F247ACAD4005A75A5 /* Search */,
+				77F1A07E247ACABD005A75A5 /* Detail */,
+				77F1A07B247AC0C6005A75A5 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		77F1A07A247AC0B5005A75A5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				77F1A07C247AC992005A75A5 /* Presenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		77F1A07B247AC0C6005A75A5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		77F1A07E247ACABD005A75A5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		77F1A07F247ACAD4005A75A5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		77F1A082247ACB8A005A75A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				775E8F112478ECA600ADA32A /* Assets.xcassets */,
+				775E8F082478ECA200ADA32A /* AppDelegate.swift */,
+				775E8F0A2478ECA200ADA32A /* SceneDelegate.swift */,
+				775E8F132478ECA600ADA32A /* LaunchScreen.storyboard */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +202,8 @@
 			files = (
 				775E8F0D2478ECA200ADA32A /* ViewController.swift in Sources */,
 				775E8F092478ECA200ADA32A /* AppDelegate.swift in Sources */,
+				77F1A081247ACB26005A75A5 /* Service.swift in Sources */,
+				77F1A07D247AC992005A75A5 /* Presenter.swift in Sources */,
 				775E8F0B2478ECA200ADA32A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
