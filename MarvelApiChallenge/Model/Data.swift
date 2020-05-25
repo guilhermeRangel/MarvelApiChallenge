@@ -7,7 +7,8 @@
 //
 
 import Foundation
-struct Data : Codable {
+
+struct Dataa : Codable {
 	var offset : String?
 	var limit : String?
 	var total : String?
