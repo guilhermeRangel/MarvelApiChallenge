@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
 class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var imgCharacter: UIImageView!
@@ -16,14 +16,19 @@ class CharacterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
      super.awakeFromNib()
+        imgCharacter.layer.cornerRadius = 10
      
  }
     
-    
-    func settupCell(thumbnail: UIImage, title: String, description: String){
-        imgCharacter.image = thumbnail
-        self.title.text = title
-        lblDescription.text = description
-        
-    }
+    public func configureWith(_ character: Character) {
+        title.text = character.name
+       lblDescription.text = character.description ?? "No description available"
+        if let imageUrlString = URL(string: character.imageURL) {
+            imgCharacter.kf.setImage(with: imageUrlString)
+            
+                  } else {
+                      self.imgCharacter.image = nil
+                  }
+
+     }
 }

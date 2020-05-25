@@ -9,50 +9,38 @@
 import Foundation
 import Moya
 import CryptoKit
-import UIKit
+
 
 public enum Marvel {
-    static private let privateKey = "297ec36cf23d74577eed62b2f0167bcf"
-    static private let publicKey = "32733661327f02e4bb659de42654f31d67697336"
-    
-    case comics
     case characters
     
+    static private let privateKey = "32733661327f02e4bb659de42654f31d67697336"
+    static private let publicKey = "297ec36cf23d74577eed62b2f0167bcf"
     
-    func MD5(string: String) -> String {
-        let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
-        
-        return digest.map {
-            String(format: "%02hhx", $0)
-        }.joined()
-    }
+    
 }
 
 extension Marvel: TargetType {
-    
     
     public var sampleData: Data {
         return Data()
     }
     
     
-    
     public var baseURL: URL {
-        return URL(string: "https://gateway.marvel.com/v1/public")!
+        return URL(string: "https://gateway.marvel.com:443/v1/public")!
     }
     
     public var path: String {
         switch self {
-        case .comics: return "/comics"
-        case .characters: return "/characters"
+        case .characters:
+            return "/characters"
             
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .comics:
-            return .get
         case .characters:
             return .get
         }
@@ -61,23 +49,16 @@ extension Marvel: TargetType {
     
     
     public var task: Task {
+        
         let ts = "\(Date().timeIntervalSince1970)"
         let hash = MD5(string: (ts + Marvel.privateKey + Marvel.publicKey))
-        
-        let authParams = ["apikey": Marvel.publicKey, "ts": ts, "hash": hash]
+        let authParams = ["ts": ts, "apikey": Marvel.publicKey, "hash": hash]
         
         switch self {
-        case .comics:
-            return .requestParameters(parameters: ["format": "comic",
-                                                   "formatType": "comic",
-                                                   "orderBy": "-onsaleDate",
-                                                   "dateDescriptor": "lastWeek",
-                                                   "limit": 50,
-                                                   "authParams":authParams],
-                                      encoding: URLEncoding.default)
-        //TODO fix
         case .characters:
-            return .requestData(Data())
+            return .requestParameters(parameters: ["orderBy": "name",
+                                                   "limit": 20] +
+                authParams, encoding: URLEncoding.default)
         }
     }
     
@@ -89,12 +70,15 @@ extension Marvel: TargetType {
         return .successCodes
     }
 }
-extension Date {
-    init?(ISO8601: String) {
-        let isoFormatter = ISO8601DateFormatter()
+
+
+//MARK: - CryptoKit
+extension Marvel {
+    func MD5(string: String) -> String {
+        let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
         
-        guard let date = isoFormatter.date(from: ISO8601) else { return nil }
-        self = date
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 }
-
