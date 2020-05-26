@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Fo-tn-PAL">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="fontAnime.ttf">
+            <string>Ninja-Naruto</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Character Deatails-->
+        <scene sceneID="puD-l4-Zc1">
+            <objects>
+                <viewController storyboardIdentifier="CharacterDeatails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Fo-tn-PAL" customClass="CharacterDeatails" customModule="MarvelApiChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lD5-tR-ZQA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CKc-8u-s3x">
+                                <rect key="frame" x="38" y="151" width="356" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CKc-8u-s3x" secondAttribute="height" multiplier="89:75" id="Hzb-fl-mE0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-Vn-ZyR">
+                                <rect key="frame" x="38" y="71" width="356" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="jEJ-tQ-Q8E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Ninja-Naruto" family="Ninja Naruto" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfB-bm-opX">
+                                <rect key="frame" x="38" y="471" width="356" height="180"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="ORu-bV-9rr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Ninja-Naruto" family="Ninja Naruto" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="QYb-Vn-ZyR" firstAttribute="top" secondItem="ndh-Jx-1uo" secondAttribute="top" constant="27" id="4Wx-ZJ-ijj"/>
+                            <constraint firstItem="UfB-bm-opX" firstAttribute="top" secondItem="CKc-8u-s3x" secondAttribute="bottom" constant="20" id="Bji-nr-BxS"/>
+                            <constraint firstItem="CKc-8u-s3x" firstAttribute="top" secondItem="QYb-Vn-ZyR" secondAttribute="bottom" constant="8" id="EDd-AH-TUz"/>
+                            <constraint firstItem="ndh-Jx-1uo" firstAttribute="bottom" secondItem="UfB-bm-opX" secondAttribute="bottom" constant="211" id="UxM-Hs-z3S"/>
+                            <constraint firstItem="QYb-Vn-ZyR" firstAttribute="leading" secondItem="ndh-Jx-1uo" secondAttribute="leading" constant="38" id="YRM-zo-w67"/>
+                            <constraint firstItem="CKc-8u-s3x" firstAttribute="leading" secondItem="UfB-bm-opX" secondAttribute="leading" id="YmK-rO-7dc"/>
+                            <constraint firstItem="QYb-Vn-ZyR" firstAttribute="leading" secondItem="CKc-8u-s3x" secondAttribute="leading" id="ZWm-rg-G2m"/>
+                            <constraint firstItem="CKc-8u-s3x" firstAttribute="trailing" secondItem="UfB-bm-opX" secondAttribute="trailing" id="bWJ-he-wHk"/>
+                            <constraint firstItem="QYb-Vn-ZyR" firstAttribute="trailing" secondItem="lD5-tR-ZQA" secondAttribute="trailingMargin" id="lay-gO-sWG"/>
+                            <constraint firstItem="QYb-Vn-ZyR" firstAttribute="trailing" secondItem="CKc-8u-s3x" secondAttribute="trailing" id="vkV-lM-7xQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ndh-Jx-1uo"/>
+                    </view>
+                    <connections>
+                        <outlet property="imgDetails" destination="CKc-8u-s3x" id="ozt-Zc-hBm"/>
+                        <outlet property="lblDescription" destination="UfB-bm-opX" id="3lV-JV-07w"/>
+                        <outlet property="lblTitle" destination="QYb-Vn-ZyR" id="6WW-HK-GAb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yl6-oE-zDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="166.74107142857142"/>
+        </scene>
+    </scenes>
+</document>

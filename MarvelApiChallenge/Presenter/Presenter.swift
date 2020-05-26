@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Presenter {
+class Presenter{
+    var character:CharacterList? = CharacterList(character: [])
     
-
 }
