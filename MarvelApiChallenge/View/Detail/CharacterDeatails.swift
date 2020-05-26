@@ -11,7 +11,6 @@ import UIKit
 
 class CharacterDeatails: UIViewController{
     @IBOutlet weak var imgDetails: UIImageView!
-    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     

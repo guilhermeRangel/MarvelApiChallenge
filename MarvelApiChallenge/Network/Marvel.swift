@@ -17,7 +17,6 @@ public enum Marvel {
     static private let privateKey = "32733661327f02e4bb659de42654f31d67697336"
     static private let publicKey = "297ec36cf23d74577eed62b2f0167bcf"
     
-    
 }
 
 extension Marvel: TargetType {
@@ -57,7 +56,7 @@ extension Marvel: TargetType {
         switch self {
         case .characters:
             return .requestParameters(parameters: ["orderBy": "name",
-                                                   "limit": 20] +
+                                                   "limit": 100] +
                 authParams, encoding: URLEncoding.default)
         }
     }

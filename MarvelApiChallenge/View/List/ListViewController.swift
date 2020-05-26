@@ -20,18 +20,18 @@ class ListViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewCharacters.rowHeight = 150
         requestCharacters()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-
+        
     }
 }
 
 extension ListViewController{
     
+
     func requestCharacters(){
         provider.request(.characters) {result in
             
@@ -41,10 +41,13 @@ extension ListViewController{
                     let characters = try response.map(MarvelResponse<Character>.self)
                     for character in characters.data.results{
                         DispatchQueue.main.async {
-                             self.listPresenter.character?.character.append(character)
-                                   self.tableViewCharacters.reloadData()
-                               }
-                       
+                            if !character.description!.isEmpty {
+                                self.listPresenter.character?.character.append(character)
+                                self.tableViewCharacters.reloadData()
+                            }
+                        }
+                        
+                        
                     }
                 } catch {
                     print("catch not recorded")
@@ -53,24 +56,20 @@ extension ListViewController{
                 print("Fail\(response.errorDescription ?? "Response Fail")")
             }
         }
-        DispatchQueue.main.async {
-            self.tableViewCharacters.reloadData()
-        }
+       
     }
 }
 
-extension ListViewController: UITableViewDelegate {
-    
-}
 
-extension ListViewController: UITableViewDataSource {
+extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = listPresenter.character?.character.count {
             return count
         }else{
             return 20
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,13 +77,14 @@ extension ListViewController: UITableViewDataSource {
             fatalError()
         }
         if listPresenter.character?.character.count ?? 0 > 0{
-             cell.configureWith((listPresenter.character?.character[indexPath.item])!)
+            cell.configureWith((listPresenter.character?.character[indexPath.item])!)
         }
-       
-        
         
         return cell
     }
+    
+    
+   
     
     
 }

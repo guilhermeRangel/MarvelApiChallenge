@@ -15,20 +15,19 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDescription: UILabel!
     
     override func awakeFromNib() {
-     super.awakeFromNib()
-        imgCharacter.layer.cornerRadius = 10
-     
- }
+        super.awakeFromNib()
+        imgCharacter.layer.cornerRadius = 15
+        lblDescription.layer.cornerRadius = 15
+        
+    }
     
     public func configureWith(_ character: Character) {
         title.text = character.name
-       lblDescription.text = character.description ?? "No description available"
+        lblDescription.text = character.description ?? "No description available"
         if let imageUrlString = URL(string: character.imageURL) {
             imgCharacter.kf.setImage(with: imageUrlString)
             
-                  } else {
-                      self.imgCharacter.image = nil
-                  }
-
-     }
+        } 
+        
+    }
 }
