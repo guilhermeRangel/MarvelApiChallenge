@@ -11,11 +11,16 @@ import UIKit
 import Moya
 import Kingfisher
 
+protocol ListViewControllerDelegate: class {
+    func offSet(count: Int)
+}
+
 class ListViewController: UIViewController  {
-    
+    weak var delegate: ListViewControllerDelegate?
     var listPresenter = Presenter()
     let provider = MoyaProvider<Marvel>()
-    var indexPath = 0
+    var indexPath = -1
+    var fetch = false
     
     @IBOutlet weak var tableViewCharacters: UITableView!
     
@@ -34,16 +39,6 @@ class ListViewController: UIViewController  {
 
 extension ListViewController{
     
-    //    func details(imageUrlString: URL, title: String, description: String){
-    //        let characterDetailsVC = UIStoryboard(name: "CharacterDeatails", bundle: nil).instantiateViewController(withIdentifier: "CharacterDeatails") as! CharacterDeatails
-    //        characterDetailsVC.modalPresentationStyle = .fullScreen
-    //
-    //        listPresenter.detailsVC.imgDetail = imageUrlString
-    //        listPresenter.detailsVC.title = title
-    //        listPresenter.detailsVC.descriptionLbl = description
-    //        self.navigationController?.pushViewController(characterDetailsVC, animated: true)
-    //
-    //    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? CharacterDeatails{
             
@@ -55,66 +50,78 @@ extension ListViewController{
             }
         }
     }
-        
-        func requestCharacters(){
-            provider.request(.characters) {result in
-                
-                switch result {
-                case .success(let response):
-                    do {
-                        let characters = try response.map(MarvelResponse<Character>.self)
-                        for character in characters.data.results{
-                            DispatchQueue.main.async {
-                                if !character.description!.isEmpty {
-                                    self.listPresenter.character?.character.append(character)
-                                    self.tableViewCharacters.reloadData()
-                                }
+    
+    func requestCharacters(){
+        provider.request(.characters) {result in
+            
+            switch result {
+            case .success(let response):
+                do {
+                    let characters = try response.map(MarvelResponse<Character>.self)
+                    for character in characters.data.results{
+                        DispatchQueue.main.async {
+                            if !character.description!.isEmpty {
+                                self.listPresenter.character?.character.append(character)
+                                self.tableViewCharacters.reloadData()
                             }
                         }
-                    } catch {
-                        print("catch not recorded")
                     }
-                case .failure(let response):
-                    print("Fail\(response.errorDescription ?? "Response Fail")")
+                } catch {
+                    print("catch not recorded")
                 }
+            case .failure(let response):
+                print("Fail\(response.errorDescription ?? "Response Fail")")
             }
-            
+        }
+        fetch = false
+    }
+}
+
+
+extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = listPresenter.character?.character.count {
+            return count
+        }else{
+            return 10
         }
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as? CharacterTableViewCell else {
+            fatalError()
+        }
+        if listPresenter.character?.character.count ?? 0 > 0{
+            cell.configureWith((listPresenter.character?.character[indexPath.item])!)
+        }
+        
+        return cell
+    }
     
-    extension ListViewController: UITableViewDataSource, UITableViewDelegate {
-        
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if let count = listPresenter.character?.character.count {
-                return count
-            }else{
-                return 20
-            }
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as? CharacterTableViewCell else {
-                fatalError()
-            }
-            if listPresenter.character?.character.count ?? 0 > 0{
-                cell.configureWith((listPresenter.character?.character[indexPath.item])!)
-            }
-            
-            return cell
-        }
-        
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            self.indexPath = indexPath.row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.indexPath = indexPath.row
+        if self.indexPath >= 0 {
             performSegue(withIdentifier: "ToDetails", sender: self)
-            
-            
-            
-            
         }
         
         
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+        if let countObj = listPresenter.character?.character.count {
+            self.delegate?.offSet(count: countObj)
+            if indexPath.row+1 == countObj && !fetch {
+                fetch = true
+                requestCharacters()
+            }
+        }
+        
+    }
+    
+    
+    
 }
 

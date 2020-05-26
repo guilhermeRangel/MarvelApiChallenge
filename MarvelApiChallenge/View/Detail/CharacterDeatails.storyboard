@@ -22,6 +22,9 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CKc-8u-s3x">
                                 <rect key="frame" x="38" y="151" width="356" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CKc-8u-s3x" secondAttribute="height" multiplier="89:75" id="Hzb-fl-mE0"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYb-Vn-ZyR">
                                 <rect key="frame" x="38" y="71" width="356" height="72"/>

@@ -16,7 +16,7 @@ public enum Marvel {
     //add gitIgnore
     static private let privateKey = "32733661327f02e4bb659de42654f31d67697336"
     static private let publicKey = "297ec36cf23d74577eed62b2f0167bcf"
-    
+   
 }
 
 extension Marvel: TargetType {
@@ -50,10 +50,11 @@ extension Marvel: TargetType {
         let ts = "\(Date().timeIntervalSince1970)"
         let hash = MD5(string: (ts + Marvel.privateKey + Marvel.publicKey))
         let authParams = ["ts": ts, "apikey": Marvel.publicKey, "hash": hash]
-        
         switch self {
         case .characters:
+            //TODO: - FIX offset
             return .requestParameters(parameters: ["orderBy": "name",
+                                                   "offset": 0,
                                                    "limit": 100] +
                 authParams, encoding: URLEncoding.default)
         }
@@ -71,6 +72,7 @@ extension Marvel: TargetType {
 
 //MARK: - CryptoKit
 extension Marvel {
+    
     func MD5(string: String) -> String {
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
         
@@ -79,3 +81,4 @@ extension Marvel {
         }.joined()
     }
 }
+
