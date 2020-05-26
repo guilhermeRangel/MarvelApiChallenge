@@ -22,7 +22,6 @@
 		7780CAC8247B99AF0059A10A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780CAC7247B99AF0059A10A /* Character.swift */; };
 		7780CACA247B9FBC0059A10A /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780CAC9247B9FBC0059A10A /* CharacterList.swift */; };
 		77C94CED247C819A00CB1932 /* fontAnime.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C94CEC247C80EC00CB1932 /* fontAnime.ttf */; };
-		77C94CEF247C968200CB1932 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C94CEE247C968200CB1932 /* Colors.swift */; };
 		77F1A07D247AC992005A75A5 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1A07C247AC992005A75A5 /* Presenter.swift */; };
 		A76EEA52E68AA8348DFC3110 /* Pods_MarvelApiChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BA47C6E241EDF97EA712DB /* Pods_MarvelApiChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +45,6 @@
 		7780CAC7247B99AF0059A10A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		7780CAC9247B9FBC0059A10A /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		77C94CEC247C80EC00CB1932 /* fontAnime.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontAnime.ttf; sourceTree = "<group>"; };
-		77C94CEE247C968200CB1932 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		77F1A07C247AC992005A75A5 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		F0BA47C6E241EDF97EA712DB /* Pods_MarvelApiChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApiChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF95BE09C3FC66FAAD74BF3B /* Pods-MarvelApiChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApiChallenge.debug.xcconfig"; path = "Target Support Files/Pods-MarvelApiChallenge/Pods-MarvelApiChallenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,8 +113,8 @@
 			children = (
 				77280C15247B08BF0097C27F /* Network */,
 				77F1A078247AC0A7005A75A5 /* Model */,
-				77F1A079247AC0B0005A75A5 /* View */,
 				77F1A07A247AC0B5005A75A5 /* Presenter */,
+				77F1A079247AC0B0005A75A5 /* View */,
 				775E8F162478ECA600ADA32A /* Info.plist */,
 			);
 			path = MarvelApiChallenge;
@@ -166,7 +164,6 @@
 				775E8F082478ECA200ADA32A /* AppDelegate.swift */,
 				775E8F0A2478ECA200ADA32A /* SceneDelegate.swift */,
 				775E8F132478ECA600ADA32A /* LaunchScreen.storyboard */,
-				77C94CEE247C968200CB1932 /* Colors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -298,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7780CAC2247B5F380059A10A /* Responses.swift in Sources */,
-				77C94CEF247C968200CB1932 /* Colors.swift in Sources */,
 				775E8F0D2478ECA200ADA32A /* ListViewController.swift in Sources */,
 				775E8F092478ECA200ADA32A /* AppDelegate.swift in Sources */,
 				770C79DB247AFB4300601DAB /* CharacterTableViewCell.swift in Sources */,

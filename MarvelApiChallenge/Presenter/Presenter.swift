@@ -10,4 +10,5 @@ import Foundation
 
 class Presenter{
     var character:CharacterList? = CharacterList(character: [])
+    
 }

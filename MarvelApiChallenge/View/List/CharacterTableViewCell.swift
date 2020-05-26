@@ -25,7 +25,7 @@ class CharacterTableViewCell: UITableViewCell {
         title.text = character.name
         lblDescription.text = character.description ?? "No description available"
         if let imageUrlString = URL(string: character.imageURL) {
-            imgCharacter.kf.setImage(with: imageUrlString)
+            imgCharacter.kf.setImage(with: imageUrlString, options: [.transition(.fade(0.3))])
             
         } 
         

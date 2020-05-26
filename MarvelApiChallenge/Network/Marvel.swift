@@ -13,7 +13,7 @@ import CryptoKit
 
 public enum Marvel {
     case characters
-    
+    //add gitIgnore
     static private let privateKey = "32733661327f02e4bb659de42654f31d67697336"
     static private let publicKey = "297ec36cf23d74577eed62b2f0167bcf"
     
@@ -44,8 +44,6 @@ extension Marvel: TargetType {
             return .get
         }
     }
-    
-    
     
     public var task: Task {
         
